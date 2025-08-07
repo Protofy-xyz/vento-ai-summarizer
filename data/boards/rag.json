@@ -1,0 +1,735 @@
+{
+    "name": "rag",
+    "cards": [
+        {
+            "key": "value_1754497857212",
+            "width": 5.5,
+            "height": 12,
+            "icon": "folder-search",
+            "name": "File Browser",
+            "description": "Render a file browser",
+            "type": "value",
+            "editorOptions": {
+                "defaultTab": "value"
+            }
+        },
+        {
+            "key": "action_1754498113300",
+            "width": 2,
+            "height": 12,
+            "icon": "file-stack",
+            "name": "files_input",
+            "description": "Interactive queue of items",
+            "type": "action",
+            "editorOptions": {
+                "defaultTab": "value"
+            },
+            "displayResponse": true,
+            "params": {
+                "item": "",
+                "action": "action to perform in the queue: push, pop, clear"
+            },
+            "configParams": {
+                "item": {
+                    "visible": true,
+                    "defaultValue": ""
+                },
+                "action": {
+                    "visible": true,
+                    "defaultValue": ""
+                }
+            },
+            "displayButton": false
+        },
+        {
+            "key": "action_1754498373413",
+            "width": 2,
+            "height": 8,
+            "icon": "file",
+            "type": "action",
+            "name": "files_read",
+            "description": "Read a file or directory",
+            "params": {
+                "path": "Path to the file or directory to read"
+            },
+            "displayResponse": true,
+            "configParams": {
+                "path": {
+                    "visible": false,
+                    "defaultValue": "/data/public/documents",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "key": "action_1754499103633",
+            "width": 2,
+            "height": 6,
+            "icon": "zap",
+            "type": "action",
+            "name": "current_item",
+            "displayResponse": true,
+            "rules": [
+                "recoge el valor del siguiente elemento de la cola, y luego ejecuta pop para borrar de la cola el elemento. Finalmente devuelve el elemento."
+            ],
+            "displayIcon": false
+        },
+        {
+            "key": "action_1754500458492",
+            "width": 2,
+            "height": 8,
+            "icon": "folder-plus",
+            "type": "action",
+            "name": "create_directory",
+            "description": "Read a file or directory",
+            "params": {},
+            "displayResponse": true,
+            "displayIcon": false,
+            "configParams": {}
+        },
+        {
+            "key": "action_1754519482232",
+            "width": 2,
+            "height": 8,
+            "icon": "file-stack",
+            "type": "action",
+            "name": "pdf dump pages",
+            "description": "Dump all pages of a PDF file to a directory.",
+            "params": {
+                "path": "pdf file path",
+                "outputDir": "output directory"
+            },
+            "displayResponse": true,
+            "configParams": {
+                "path": {
+                    "visible": false,
+                    "defaultValue": "",
+                    "type": "string"
+                },
+                "outputDir": {
+                    "visible": false,
+                    "defaultValue": "",
+                    "type": "string"
+                }
+            },
+            "displayIcon": false
+        },
+        {
+            "key": "action_1754498373413_vento_copy_50uwvr6uo5w0y2ldm12a",
+            "width": 2,
+            "height": 8,
+            "icon": "file",
+            "type": "action",
+            "name": "pages_read",
+            "description": "Read a file or directory",
+            "params": {},
+            "displayResponse": true,
+            "configParams": {},
+            "displayIcon": false
+        },
+        {
+            "key": "action_1754520506854",
+            "width": 2,
+            "height": 12,
+            "icon": "file-stack",
+            "name": "pages queue",
+            "description": "Interactive queue of items",
+            "type": "action",
+            "editorOptions": {
+                "defaultTab": "value"
+            },
+            "displayResponse": true,
+            "params": {
+                "item": "",
+                "action": "action to perform in the queue: push, pop, clear"
+            },
+            "configParams": {
+                "item": {
+                    "visible": true,
+                    "defaultValue": ""
+                },
+                "action": {
+                    "visible": true,
+                    "defaultValue": ""
+                }
+            },
+            "displayButton": false
+        },
+        {
+            "key": "action_1754521463605",
+            "width": 2,
+            "height": 6,
+            "icon": "zap",
+            "type": "action",
+            "name": "current_page",
+            "displayResponse": true,
+            "rules": [
+                "recoge el valor del siguiente elemento de la cola pages_queue, y luego ejecuta pop para borrar de la cola el elemento. Finalmente devuelve el elemento."
+            ],
+            "displayIcon": false
+        },
+        {
+            "key": "action_1754522576114",
+            "width": 3,
+            "height": 12,
+            "icon": "sparkles",
+            "type": "action",
+            "name": "AI card",
+            "displayResponse": true,
+            "params": {
+                "prompt": ""
+            },
+            "configParams": {
+                "prompt": {
+                    "visible": false,
+                    "defaultValue": "",
+                    "type": "text"
+                }
+            },
+            "method": "post",
+            "displayIcon": false,
+            "displayButton": true,
+            "displayButtonIcon": true
+        },
+        {
+            "key": "value_1754598487844",
+            "width": 3,
+            "height": 12,
+            "icon": "file-text",
+            "name": "prompt",
+            "description": "Render formatted markdown using ReactMarkdown",
+            "type": "value",
+            "editorOptions": {
+                "defaultTab": "value"
+            }
+        },
+        {
+            "key": "value_1754598644552",
+            "width": 1,
+            "height": 4,
+            "icon": "tag",
+            "type": "value",
+            "name": "current_page_num",
+            "rules": [
+                "si existe current_page.path, quiero el valor de current_page.path pero me interesa solo el numero del final, por ejemplo, ahora es -1.pdf, me interesa el 1. Si fuese -20.pdf, me interesaría el 20."
+            ]
+        },
+        {
+            "key": "action_1754599107623",
+            "width": 2,
+            "height": 6,
+            "icon": "zap",
+            "type": "action",
+            "name": "current_summary",
+            "displayResponse": true,
+            "method": "post",
+            "params": {
+                "summary": "summary of the document"
+            },
+            "configParams": {
+                "summary": {
+                    "visible": true,
+                    "defaultValue": "",
+                    "type": "text"
+                }
+            },
+            "displayIcon": false
+        },
+        {
+            "key": "action_1754602387994",
+            "width": 2,
+            "height": 6,
+            "icon": "message-square-text",
+            "type": "action",
+            "name": "card reset",
+            "description": "Reset the value of a card in the board",
+            "params": {
+                "name": "Name of the card to reset"
+            },
+            "displayResponse": true,
+            "buttonLabel": "Reset card",
+            "displayIcon": false,
+            "configParams": {
+                "name": {
+                    "visible": true,
+                    "defaultValue": "current_summary",
+                    "type": "string"
+                }
+            }
+        }
+    ],
+    "autopilot": false,
+    "layouts": {
+        "lg": [
+            {
+                "w": 19,
+                "h": 12,
+                "x": 0,
+                "y": 0,
+                "i": "value_1754497857212",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 19,
+                "h": 11,
+                "x": 0,
+                "y": 21,
+                "i": "action_1754498113300",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 19,
+                "h": 9,
+                "x": 0,
+                "y": 12,
+                "i": "action_1754498373413",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 6,
+                "x": 19,
+                "y": 0,
+                "i": "action_1754499103633",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 7,
+                "x": 19,
+                "y": 6,
+                "i": "action_1754500458492",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 6,
+                "x": 19,
+                "y": 13,
+                "i": "action_1754519482232",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 13,
+                "x": 19,
+                "y": 19,
+                "i": "action_1754498373413_vento_copy_50uwvr6uo5w0y2ldm12a",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 14,
+                "x": 34,
+                "y": 0,
+                "i": "action_1754520506854",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 7,
+                "x": 34,
+                "y": 14,
+                "i": "action_1754521463605",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 19,
+                "h": 27,
+                "x": 49,
+                "y": 0,
+                "i": "action_1754522576114",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 15,
+                "h": 11,
+                "x": 34,
+                "y": 21,
+                "i": "value_1754598487844",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 8,
+                "h": 5,
+                "x": 49,
+                "y": 27,
+                "i": "value_1754598644552",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 22,
+                "h": 32,
+                "x": 68,
+                "y": 0,
+                "i": "action_1754599107623",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            },
+            {
+                "w": 11,
+                "h": 5,
+                "x": 57,
+                "y": 27,
+                "i": "action_1754602387994",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            }
+        ],
+        "md": [
+            {
+                "i": "value_1754497857212",
+                "x": 0,
+                "y": 0,
+                "w": 42,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498113300",
+                "x": 42,
+                "y": 13,
+                "w": 15,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413",
+                "x": 0,
+                "y": 27,
+                "w": 15,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754499103633",
+                "x": 30,
+                "y": 41,
+                "w": 15,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754500458492",
+                "x": 45,
+                "y": 47,
+                "w": 15,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754519482232",
+                "x": 30,
+                "y": 68,
+                "w": 15,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413_vento_copy_50uwvr6uo5w0y2ldm12a",
+                "x": 45,
+                "y": 76,
+                "w": 15,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754520506854",
+                "x": 0,
+                "y": 85,
+                "w": 15,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754521463605",
+                "x": 15,
+                "y": 98,
+                "w": 15,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754522576114",
+                "x": 30,
+                "y": 104,
+                "w": 23,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598487844",
+                "x": 0,
+                "y": 118,
+                "w": 23,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598644552",
+                "x": 23,
+                "y": 131,
+                "w": 8,
+                "h": 5,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754599107623",
+                "x": 31,
+                "y": 135,
+                "w": 15,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754602387994",
+                "x": 46,
+                "y": 141,
+                "w": 15,
+                "h": 7,
+                "isResizable": true
+            }
+        ],
+        "sm": [
+            {
+                "i": "action_1754498113300",
+                "x": 0,
+                "y": 0,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413",
+                "x": 1,
+                "y": 13,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754499103633",
+                "x": 1,
+                "y": 28,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754500458492",
+                "x": 0,
+                "y": 35,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754519482232",
+                "x": 1,
+                "y": 56,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413_vento_copy_50uwvr6uo5w0y2ldm12a",
+                "x": 0,
+                "y": 65,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754520506854",
+                "x": 1,
+                "y": 73,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754521463605",
+                "x": 0,
+                "y": 87,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754522576114",
+                "x": 0,
+                "y": 94,
+                "w": 2,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598487844",
+                "x": 0,
+                "y": 108,
+                "w": 2,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598644552",
+                "x": 0,
+                "y": 122,
+                "w": 1,
+                "h": 5,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754599107623",
+                "x": 1,
+                "y": 126,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754602387994",
+                "x": 0,
+                "y": 133,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            }
+        ],
+        "xs": [
+            {
+                "i": "action_1754498113300",
+                "x": 0,
+                "y": 0,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413",
+                "x": 0,
+                "y": 14,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754499103633",
+                "x": 0,
+                "y": 30,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754500458492",
+                "x": 0,
+                "y": 37,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754519482232",
+                "x": 0,
+                "y": 60,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754498373413_vento_copy_50uwvr6uo5w0y2ldm12a",
+                "x": 0,
+                "y": 69,
+                "w": 1,
+                "h": 9,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754520506854",
+                "x": 0,
+                "y": 78,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754521463605",
+                "x": 0,
+                "y": 92,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754522576114",
+                "x": 0,
+                "y": 99,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598487844",
+                "x": 0,
+                "y": 113,
+                "w": 1,
+                "h": 14,
+                "isResizable": true
+            },
+            {
+                "i": "value_1754598644552",
+                "x": 0,
+                "y": 127,
+                "w": 1,
+                "h": 5,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754599107623",
+                "x": 0,
+                "y": 132,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            },
+            {
+                "i": "action_1754602387994",
+                "x": 0,
+                "y": 139,
+                "w": 1,
+                "h": 7,
+                "isResizable": true
+            }
+        ]
+    },
+    "rules": [
+        "al arrancar, ejecuta current_page para coger la primera pagina, ya que current_page coge un elemento de pages queue. Vigila cuando cambie current_page y dispara AI card cada vez que current_page cambie. Vigila cuando cambie current_summary y dispara current_page para pasar a la siguiente pagina. De esta forma el sistema entrara en bucle pasando paginas conforme se generan los summaries. No pases a la siguiente current_page si pages queue está vacio, ahi termina todo"
+    ]
+}

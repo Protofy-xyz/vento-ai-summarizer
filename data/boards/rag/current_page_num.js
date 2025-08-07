@@ -1,0 +1,3 @@
+// El siguiente código busca en el objeto board el valor de current_page.path, extrae el número que aparece antes de la extensión .pdf y lo devuelve.
+// Si current_page.path no existe en el objeto board, se genera un mensaje de error que explica que la ruta no se encuentra y no se puede extraer el número.
+return board?.['current_page']?.['path'] ? parseFloat(board['current_page']['path'].match(/-(\d+)\.pdf$/)[1]) : "-";
