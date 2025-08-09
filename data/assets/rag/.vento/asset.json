@@ -1,0 +1,19 @@
+{
+    "name": "rag",
+    "description": "Experimental RAG asset for Vento. Work in progress.",
+    "author": "protofy",
+    "tags": [
+        "rag",
+        "ai",
+        "experimental",
+        "pdf"
+    ],
+    "version": "0.0.1",
+    "packagedFiles": [
+        "data/boards/rag.js",
+        "data/boards/rag.json",
+        "data/boards/rag/**",
+        "data/public/documents/.keep",
+        "data/public/documents_meta/.keep"
+    ]
+}

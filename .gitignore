@@ -15,7 +15,10 @@ data/assets/*.zip
 !data/objects
 !data/boards
 !data/themes
+data/assets/rag/data/**
 data/public/*
+!data/public/documents/.keep
+!data/public/documents_meta/.keep
 !data/public/fonts/
 !data/public/fonts/**
 !.yarn/patches
